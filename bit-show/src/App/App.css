@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+
+
+header { 
+  background: #343a40;
+  height: 50px;
+}
+
+
+footer {
+  background: #343a40;
+  height: 50px;
+
+  
+}
+
+
+.showcard {
+width: 250px;
+
+display: inline-block;
+margin-top: 20px;
+padding-left: 20px;
+text-align: center;
+margin-bottom: 20px;
+  
+}
+.shows{
+
+width: 60%;
+margin:  0 auto;  
+padding-left: 60px;
+}
+
+
+
+.season {
+  width: 400px;
+  float: right;
+  margin-right: 270px;
+  margin-top: 10px;
+}
+
+.originalImg {
+    height: 500px;
+    margin-left: 40px;
+}
+
