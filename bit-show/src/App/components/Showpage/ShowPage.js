@@ -44,7 +44,9 @@ class ShowPage extends Component {
     
     render(){
         
-
+        if(!this.state.shows.length){
+            return <h1>Loading...</h1>
+        }
            return (
           <>
             <h2 className="text-center">Popular Shows</h2>

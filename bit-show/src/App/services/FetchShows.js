@@ -20,7 +20,7 @@ const FetchShows = (props) => {
 
 const FetchSingleShow = (id) => {
                 
-    return fetch(`http://api.tvmaze.com/shows/5?embed[]=seasons&embed[]=cast`)
+    return fetch(`http://api.tvmaze.com/shows/9?embed[]=seasons&embed[]=cast`)
     .then(response => {
         return response.json()
     })

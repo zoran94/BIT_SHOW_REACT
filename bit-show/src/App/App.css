@@ -50,17 +50,33 @@ margin:  0 auto;
 padding-left: 60px;
 }
 
-
+.god {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 50px
+}
 
 .season {
+  width: 400px;
+  float: right;
+  margin-top: 10px;
+  margin-right: 10%
+}
+
+.originalImg {
+    height: 600px;
+    margin-left: 40px;
+}
+
+
+
+.cast {
   width: 400px;
   float: right;
   margin-right: 270px;
   margin-top: 10px;
 }
 
-.originalImg {
-    height: 500px;
-    margin-left: 40px;
+.details {
+  margin: 50px;
 }
-
