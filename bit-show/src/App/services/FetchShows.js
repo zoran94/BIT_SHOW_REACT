@@ -20,7 +20,7 @@ const FetchShows = (props) => {
 
 const FetchSingleShow = (id) => {
                 
-    return fetch(`http://api.tvmaze.com/shows/9?embed[]=seasons&embed[]=cast`)
+    return fetch(`http://api.tvmaze.com/shows/${id}?embed[]=seasons&embed[]=cast`)
     .then(response => {
         return response.json()
     })
@@ -35,6 +35,20 @@ const FetchSingleShow = (id) => {
     })
 }
 
+const FetchSearchedShows = (value) => {
+    return fetch(`http://api.tvmaze.com/search/shows?q=${value}`)
+    .then(response => response.json())
+    .then(shows => {
+        const showArr = shows
+         .filter(show => show.show.image)
+        .map(show => {
+            const {id, name, image, rating} = show;
+            return new Show(show.show.id, show.show.name, show.show.image, show.show.rating.average)
+        })
+        return showArr
+
+    })
+}
 
 
 
@@ -42,4 +56,5 @@ const FetchSingleShow = (id) => {
 export {
     FetchShows,
     FetchSingleShow,
+    FetchSearchedShows
 }

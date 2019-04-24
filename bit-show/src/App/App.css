@@ -22,6 +22,7 @@ body {
 header { 
   background: #343a40;
   height: 50px;
+ 
 }
 
 
@@ -50,6 +51,20 @@ margin:  0 auto;
 padding-left: 60px;
 }
 
+.head{
+  display: inline;
+  color:white
+}
+
+input {
+  margin-top: 10px; 
+  width: 20%;
+  /* float: right; */
+  position: absolute;
+  right: 40px;
+
+}
+
 .god {
   width: 70%;
   margin: 0 auto;
@@ -69,6 +84,11 @@ padding-left: 60px;
 }
 
 
+.text-center{
+  widows: 300px;
+}
+
+
 
 .cast {
   width: 400px;
@@ -79,4 +99,26 @@ padding-left: 60px;
 
 .details {
   margin: 50px;
+}
+
+.lista {
+  position: absolute;
+  right: 40px;
+  top: 50px;
+  list-style-type: none;
+ 
+}
+a:hover {
+  text-decoration:none; 
+}
+
+li {
+  background: white;
+  color: black;
+  text-decoration: none;
+  width: 300px;
+
+}
+li:hover {
+  background: #fefd9f
 }

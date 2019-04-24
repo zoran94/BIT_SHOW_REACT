@@ -1,16 +1,23 @@
-import React from 'react';
-
-const Header = (props) => {
-
-
-    return (
-        <header className="text-white">
-        <div className="container">
-        <h2 >Bit Show</h2>
-        </div>
-        </header>
-    )
-
+import React,{Component} from 'react';
+import {Link} from "react-router-dom"
+class Header extends Component {
+    constructor(props){
+        super(props)
+            
+    }
+    
+    
+    
+    render(){
+        return (
+            <header className="text-white">
+            <div className="container">
+            <Link to="/"> <h2 className="head">Bit Show</h2>    </Link>
+            </div>
+            </header>
+        )
+    
+    }
 
 }
 

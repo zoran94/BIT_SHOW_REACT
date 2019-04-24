@@ -3,16 +3,10 @@ import './App.css';
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Main from "./Main";
-class App extends Component {
-  
-  
-  
-  
-  
-  
 
-  
-  
+
+class App extends Component {
+    
   render() {
 
       return (
@@ -20,7 +14,7 @@ class App extends Component {
             <Header />
 
           <Main />
-          {/* <Footer /> */}
+          <Footer /> 
           </>
       )
   }
