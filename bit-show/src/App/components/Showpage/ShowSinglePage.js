@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as data from "./../../services/FetchShows";
 import CastList from "./CastList";
 import ShowDetails from "./ShowDetails";
+import PropTypes from 'prop-types';
 
 class ShowSinglePage extends Component{
     constructor(props){
@@ -71,5 +72,8 @@ class ShowSinglePage extends Component{
     }
 }
 
+ShowSinglePage.propTypes = {
+    name: PropTypes.string
+  };
 
 export default ShowSinglePage;
