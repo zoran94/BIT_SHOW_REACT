@@ -1,3 +1,7 @@
+
+<img src="https://raw.githubusercontent.com/zoran94/BIT_SHOW_REACT/master/assets/show.jpg" />
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
