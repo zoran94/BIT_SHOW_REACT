@@ -3,58 +3,53 @@ import * as data from "./../../services/FetchShows";
 import CastList from "./CastList";
 import ShowDetails from "./ShowDetails";
 import PropTypes from 'prop-types';
+import { connect } from "react-redux";
+import { SingleShow} from "./../../actions/showAction";
+
 
 class ShowSinglePage extends Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            show: {},
-
-        }
-    }
+    
 
         componentDidMount(){
-            data.FetchSingleShow(this.props.match.params.id)
-            .then(show => {
-                this.setState({
-                    show: show,
-                })
-            })
+            this.props.SingleShow(this.props.match.params.id)
+            
         }
         
-
         SeasonsList = () => {
-            return !this.state.show.seasons ? null : this.state.show.seasons.map(season => {
+            return !this.props.singleShow.seasons ? null : this.props.singleShow.seasons.map(season => {
                 return <li>{season.premiereDate} - {season.endDate}</li>
             })
         }
         
         CountSeasons = () => {
-          return  !this.state.show.seasons ? null : this.state.show.seasons.length
+            return  !this.props.singleShow.seasons ? null : this.props.singleShow.seasons.length
         }
         
-       CastList = () => {
-           return !this.state.show.cast ? <h2>Loading...</h2> : this.state.show.cast.map(cast => {
-               
-               return <li>{cast.character.name}</li>
-           })
-       }
+        CastList = () => {
+            return !this.props.singleShow.cast ? <h2>Loading...</h2> : this.props.singleShow.cast.map(cast => {
+                
+                return <li>{cast.character.name}</li>
+            })
+        }
         
-       ShowDetails = () => {
-           return this.state.show.summary
-       }
+        ShowDetails = () => {
+            return this.props.singleShow.summary
+        }
         
         
         
         render(){
-        if(!this.state.show){
-            return <h1>Loading...</h1>
-        }
-        return (
+            const {name, image} = this.props.singleShow;
+
+        
+            if(!this.props.singleShow){
+                return <h1>Loading...</h1>
+            }
+            return (
             <>
-            <h1 className="text-center">{this.state.show.name}</h1>
+            <h1 className="text-center">{name}</h1>
             <div className="god">
-             <img className="originalImg" src={this.state.show.image} alt="..." />
+             <img className="originalImg" src={image} alt="..." />
             
 
             <div className="season">
@@ -76,4 +71,14 @@ ShowSinglePage.propTypes = {
     name: PropTypes.string
   };
 
-export default ShowSinglePage;
+const mapStateToProps = state => {
+    return {
+        singleShow: state.showInfo.singleShow
+    }
+}
+
+const mapDispatchToProps = {
+    SingleShow
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowSinglePage);

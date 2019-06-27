@@ -1,30 +1,25 @@
 import React, { Component } from 'react';
 import * as data  from "./../../services/FetchShows";
 import {Link} from "react-router-dom"
+import { connect } from "react-redux";
+import {Show, SearchedShows} from "./../../actions/showAction";
 
 class ShowPage extends Component {
     constructor(props){
         super(props)
         this.state = {
-            shows: [],
-            searchedShows: [],
             inputValue: "",
+            searchedShows: []
         }
     }
 
 
     componentDidMount(){
-        data.FetchShows()
-        .then(shows => {
-            this.setState({
-                shows: shows
-            })
-        })
+       this.props.Show()
+       
     }
     
     onInputChange=(e)=> {
-     
-
             this.setState({
                 inputValue: e.target.value
             })
@@ -34,22 +29,23 @@ class ShowPage extends Component {
                 this.setState({
                     searchedShows:shows
                 })
-            })
+            })            
         }
     
-        onKey = (e)=>{
-            return this.state.searchedShows.filter(show => {
-                console.log(show.id)
-                if(this.state.inputValue.includes(show.name)){
-                        if(e.keyCode === 13){
-                        return
-                    }
-                    }
-                })
-        }
+        // onKey = (e)=>{
+        //     return this.props.searchedShow.filter(show => {
+        //         console.log(show.id)
+        //         if(this.state.inputValue.includes(show.name)){
+        //                 if(e.keyCode === 13){
+        //                 return
+        //             }
+        //             }
+        //         })
+        // }
         
-        SearchedShows = () => {
+        SearchedShow = () => {
             return this.state.searchedShows.map(show => {
+               
                 return (
                        <Link to={`/show/${show.id}`}>
                 <li>{show.name}</li>
@@ -59,7 +55,7 @@ class ShowPage extends Component {
     }
     
     renderShows = () => {
-        return   this.state.shows.slice(0, 12).map(show => {
+        return   this.props.shows.slice(0, 20).map(show => {
         
         return (
             <div className="showcard">
@@ -79,7 +75,9 @@ class ShowPage extends Component {
     
     render(){
         
-        if(!this.state.shows.length){
+       console.log(this.state.searchedShows)
+     
+        if(!this.props.shows.length){
             return <h1>Loading...</h1>
         }
            return (
@@ -90,7 +88,7 @@ class ShowPage extends Component {
             onKeyUp={this.onKey}
             />
             <ul className="lista">
-            {this.SearchedShows()}
+            {this.SearchedShow()}
             </ul>
           <h2 className="text-center">Popular Shows</h2>
             <div className="shows">
@@ -103,8 +101,17 @@ class ShowPage extends Component {
 }
 
 
+const mapStateToProps = state => {
+    return {
+        shows: state.show.shows,
+        searchedShows: state.searchedShow.searchedShow
+    }
+}
 
+const mapDispatchToProps = {
+    Show,
+    SearchedShows
+}
 
-
-export default ShowPage;
+export default connect(mapStateToProps, mapDispatchToProps)(ShowPage);
 
